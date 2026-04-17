@@ -33,9 +33,11 @@ int builtin_cmd(char **args)
             chdir(args[1]);
         return 1;
     }
-    if (strcmp(args[0], "help") == 0)
+    if (strcmp(args[0], "echo") == 0)
     {
-        printf("MyShell - commands: cd, exit, help\n");
+        for (int i = 1; args[i] != NULL; i++)
+        printf("%s ", args[i]);
+    printf("\n");
         return 1;
     }
     return 0;
