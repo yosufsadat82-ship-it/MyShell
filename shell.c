@@ -70,6 +70,9 @@ void run_shell()
         fflush(stdout);
         if (fgets(input, MAX_INPUT, stdin) == NULL)
             break;
+
+        add_history(input);
+
         if (parse_input(input, args) == 0)
             continue;
         execute(args);
