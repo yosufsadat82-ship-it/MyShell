@@ -49,7 +49,8 @@ int execute(char **args)
 
     pid = fork();
     if (pid == 0)
-    {
+    {  
+        handle_redirection(args);
         if (execvp(args[0], args) == -1)
             perror("myshell");
         exit(1);
