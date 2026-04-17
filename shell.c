@@ -46,6 +46,8 @@ int execute(char **args)
 
     if (builtin_cmd(args))
         return 1;
+    if (handle_pipe(args))
+        return 1;
 
     pid = fork();
     if (pid == 0)
