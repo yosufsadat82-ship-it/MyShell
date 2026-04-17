@@ -15,7 +15,7 @@ void print_history(void);
 char *get_history_entry(int n);
 int handle_redirection(char **args);
 int handle_pipe(char **args);
-   
+void setup_signals(void);   
 
 #endif
 

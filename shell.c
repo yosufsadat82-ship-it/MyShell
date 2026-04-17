@@ -4,6 +4,8 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include "shell.h"
+#include <signal.h>
+
 
 int parse_input(char *input, char **args)
 {
@@ -61,9 +63,16 @@ int execute(char **args)
         waitpid(pid, &status, 0);
     return 1;
 }
+void setup_signals(void)
+{
+    signal(SIGINT,  SIG_IGN);
+    signal(SIGQUIT, SIG_IGN);
+    signal(SIGTSTP, SIG_IGN);
+}
 
 void run_shell()
-{
+{ 
+    setup_signals();
     char input[MAX_INPUT];
     char *args[MAX_ARGS];
 
